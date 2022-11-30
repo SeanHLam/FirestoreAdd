@@ -2,11 +2,12 @@ import {View, Text, Button, Image} from  "react-native";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { useState } from "react";
 
-export default function Home() { 
+export default function Home({ navigation }) { 
   const [users, setUsers] = useState([])
-    const GetData = async ()=>{
+    
+  //retrieve data
+  const GetData = async ()=>{
       const db = getFirestore() 
-
       const querySnapshot = await getDocs(collection(db, "users"));
       const dbusers = []
       querySnapshot.forEach((doc) => {
@@ -24,6 +25,7 @@ export default function Home() {
     return(
         <View>
           <Button title="get data" onPress={()=>GetData()}></Button>
+          <Button title="go to add user" onPress={()=>navigation.navigate("Register")}></Button>
           {users.map(o=><View>
           <Image source={{uri:o.avatar}} style={{width:100,height:100}}></Image>
           <Text>{o.id} - {o.fullname}</Text>

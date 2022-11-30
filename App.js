@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './screens/Home.js';
+import Register from './screens/Register.js';
 
 
 import { getFirestore } from "firebase/firestore";
@@ -42,6 +43,10 @@ export default function App() {
         <Stack.Screen 
           name="Home" 
           component={Home} 
+        />
+         <Stack.Screen 
+          name="Register" 
+          component={Register} 
         />
       </Stack.Navigator>
     </NavigationContainer>
